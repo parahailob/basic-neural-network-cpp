@@ -24,16 +24,28 @@ int main(){
     for(int i = 0; i < training_images.size(); i++){
         dVector labels(10, 0);
         labels[int(training_labels[i])] = 1.0;
+        for(double& ele: training_images[i]) ele /= 255.0;
         training_data.push_back(make_pair(training_images[i], labels));
     }
     DataTest test_data;
     for(int i = 0; i < test_images.size(); i++){
+        for(double& ele: test_images[i]) ele /= 255.0;
         test_data.push_back(make_pair(test_images[i], int(test_labels[i])));
     }
     std::cout << "Reading complete" << std::endl;
     neural::Network net({784, 28, 10});
     std::cout << "Network created" << std::endl;
-    net.SGD(training_data, 30, 5, 0.9, test_data);
+    net.SGD(training_data, 30, 10, 0.9, test_data);
+
+    // dVector vec1 = {1,2,3,4};
+    // dVector vec2 = {1,2,3};
+    // ddVector res = alg::mult_vec_vec(vec2, vec1);
+    // res = alg::transpose(res);
+    // std::cout << std::endl;
+    // for(auto& row: res){
+    //     for(auto& ele:row) std::cout << ele << " ";
+    //     std::cout << std::endl;
+    // } 
 
     return 0;
 }

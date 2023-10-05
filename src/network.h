@@ -135,13 +135,8 @@ namespace neural{
                 dVector delta = mult_vec_ele(cost_derivative(activations.back(), y), sigmoid_prime(zs.back()));
                 
                 nabla_b.back() = delta;
-                nabla_w.back() = mult_vec_vec(delta, activations[size(activations)-2]);
+                nabla_w.back() = mult_vec_vec(delta, activations[activations.size()-2]);
                 
-                
-
-
-                
-
                 for(int l = 2; l < num_layers; l++){
                     dVector z = zs[zs.size()-l];
                     dVector sp = sigmoid_prime(z);
