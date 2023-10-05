@@ -34,18 +34,12 @@ int main(){
     }
     std::cout << "Reading complete" << std::endl;
     neural::Network net({784, 28, 10});
-    std::cout << "Network created" << std::endl;
-    net.SGD(training_data, 30, 10, 0.9, test_data);
+    std::cout << "Network created, starting Stochastic Gradient Descent" << std::endl;
 
-    // dVector vec1 = {1,2,3,4};
-    // dVector vec2 = {1,2,3};
-    // ddVector res = alg::mult_vec_vec(vec2, vec1);
-    // res = alg::transpose(res);
-    // std::cout << std::endl;
-    // for(auto& row: res){
-    //     for(auto& ele:row) std::cout << ele << " ";
-    //     std::cout << std::endl;
-    // } 
+    // Outputing test results by each Epoch against the validation data.
+    net.SGD(training_data, 30, 7, 0.9, test_data);
+    
+
 
     return 0;
 }
