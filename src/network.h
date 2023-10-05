@@ -92,7 +92,6 @@ namespace neural{
             }
 
             void update_mini_batch(Data& mini_batch, double eta){
-                // std::cout << mini_batch.size() << "NEW BATCH START HERE AAAAAAAAAAAA" << std::endl;
                 ddVector nabla_b;
                 for(int i = 0; i < size(biases); i++) nabla_b.push_back(zeros(biases[i]));
                 dddVector nabla_w;
